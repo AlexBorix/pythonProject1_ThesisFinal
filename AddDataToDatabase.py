@@ -10,7 +10,7 @@ firebase_admin.initialize_app(cred,{
 ref = db.reference('Students')
 
 data = {
-    "00001" :
+    "000001" :
         {
             "name": "Mme SOUDRE",
             "major": "IT",
