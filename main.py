@@ -90,7 +90,7 @@ while True:
                 print(studentInfo)
                 #Get the image from the storage
                 blob = bucket.get_blob(f'Images/{id}.png')
-                array = np.frombuffer(blob.download_as_string(), np.uint8)
+                array = np.frombuffer(blob.download_as_string(), np.uint8)#Error Handling
                 imgStudent = cv2.imdecode(array, cv2.COLOR_BGRA2BGR)
                 #Update data of attendance
                 datetimeObject = datetime.strptime(studentInfo['last_attendance_time'],
@@ -114,19 +114,19 @@ while True:
                     modeType = 2
                 imgBackground[44:44 + 633, 808:808 + 414] = imgModeList[modeType]
                 if counter <=10:
-                    #dissplay the different information of the student
+                    #display the different information of the student
                     cv2.putText(imgBackground,str(studentInfo['total_attendance']),(861,125),
                                 cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),1) #to display the number of attendance on the background
                     cv2.putText(imgBackground, str(studentInfo['major']), (1006, 550),
                                 cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
                     cv2.putText(imgBackground, str(id), (1006, 493),
                                 cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
-                    cv2.putText(imgBackground, str(studentInfo['standing']), (910, 625),
-                                cv2.FONT_HERSHEY_COMPLEX, 0.6, (100, 100, 100), 1)
+                    """cv2.putText(imgBackground, str(studentInfo['standing']), (910, 625),
+                                cv2.FONT_HERSHEY_COMPLEX, 0.6, (100, 100, 100), 1)"""
                     cv2.putText(imgBackground, str(studentInfo['year']), (1025, 625),
                                 cv2.FONT_HERSHEY_COMPLEX, 0.6, (100, 100, 100), 1)
-                    cv2.putText(imgBackground, str(studentInfo['starting_year']), (1125, 625),
-                                cv2.FONT_HERSHEY_COMPLEX, 0.6, (100, 100, 100), 1)
+                    """cv2.putText(imgBackground, str(studentInfo['starting_year']), (1125, 625),
+                                cv2.FONT_HERSHEY_COMPLEX, 0.6, (100, 100, 100), 1)"""
 
                     #we wanna center the name
                     (w, h), _ = cv2.getTextSize(studentInfo['name'],cv2.FONT_HERSHEY_COMPLEX,1,1) #get the weight of the name text

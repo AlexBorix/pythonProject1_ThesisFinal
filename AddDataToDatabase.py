@@ -14,10 +14,10 @@ data = {
         {
             "name": "Mme SOUDRE",
             "major": "IT",
-            "starting_year": 2015,
+           # "starting_year": 2015,
             "total_attendance": 3,
-            "standing": "B",
-            "year": 2,
+            #"standing": "B",
+            "year": "2023-2024",
             "last_attendance_time": "2022-12-11 00:54:34",
 
         },
@@ -25,10 +25,10 @@ data = {
         {
             "name": "Hamado",
             "major": "Dev",
-            "starting_year": 2017,
+            #"starting_year": 2017,
             "total_attendance": 7,
-            "standing": "G",
-            "year": 4,
+            #"standing": "G",
+            "year": "2021-2022",
             "last_attendance_time": "2022-12-11 00:54:34",
 
         },
@@ -36,10 +36,10 @@ data = {
         {
             "name": "Naomi",
             "major": "Mgm",
-            "starting_year": 2021,
+            #"starting_year": 2021,
             "total_attendance": 12,
-            "standing": "B",
-            "year": 1,
+            #"standing": "B",
+            "year": "2020-2021",
             "last_attendance_time": "2022-12-11 00:54:34",
 
         },
@@ -47,10 +47,10 @@ data = {
         {
             "name": "Boris",
             "major": "Thesis",
-            "starting_year": 2020,
+            #"starting_year": 2020,
             "total_attendance": 7,
-            "standing": "G",
-            "year": 2,
+            #"standing": "G",
+            "year": "2019-2020",
             "last_attendance_time": "2022-12-11 00:54:34",
 
         },

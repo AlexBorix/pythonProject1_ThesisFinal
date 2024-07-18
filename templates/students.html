@@ -1,0 +1,86 @@
+<!-- templates/students.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Student List</h2>
+
+        <!-- Search form -->
+        <form class="form-inline mb-3">
+            <label class="mr-2" for="majorFilter">Filter by Major:</label>
+            <select class="form-control mr-2" id="majorFilter">
+                <option value="">All</option>
+                {% for major in majors %}
+                    <option value="{{ major }}" {% if majorFilter == major %} selected {% endif %}>{{ major }}</option>
+                {% endfor %}
+            </select>
+
+            <label class="mr-2" for="yearFilter">Filter by Year:</label>
+            <select class="form-control" id="yearFilter">
+                <option value="">All</option>
+                {% for year in years %}
+                    <option value="{{ year }}" {% if yearFilter == year %} selected {% endif %}>{{ year }}</option>
+                {% endfor %}
+            </select>
+        </form>
+
+        <!-- Student table -->
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Major</th>
+                    <th>Year</th>
+                    <th>Total Attendance</th>
+                    <th>Last Attendance Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student_id, student in students.items() %}
+                    {% if (not majorFilter or student.major == majorFilter) and (not yearFilter or student.year == yearFilter) %}
+                        <tr>
+                            <td>{{ student_id }}</td>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.major }}</td>
+                            <td>{{ student.year }}</td>
+                            <td>{{ student.total_attendance }}</td>
+                            <td>{{ student.last_attendance_time }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript to handle filter change
+        document.getElementById('majorFilter').addEventListener('change', function() {
+            window.location.href = '/students?major=' + this.value + '&year=' + document.getElementById('yearFilter').value;
+        });
+
+        document.getElementById('yearFilter').addEventListener('change', function() {
+            window.location.href = '/students?major=' + document.getElementById('majorFilter').value + '&year=' + this.value;
+        });
+    </script>
+</body>
+</html>
